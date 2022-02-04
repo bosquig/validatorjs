@@ -1,7 +1,7 @@
 {
-  "name": "validatorjs",
+  "name": "@bosquig/validatorjs",
   "description": "Validation library inspired by Laravel's Validator",
-  "version": "3.22.1",
+  "version": "3.22.2",
   "author": "David <david@thejsguy.com>",
   "contributors": [
     {
@@ -18,7 +18,9 @@
     }
   ],
   "license": "MIT",
-  "main": "./src/validator.js",
+  "main": "dist/validatorjs.umd.js",
+  "module": "dist/validatorjs.esm.js",
+  "unpkg": "dist/validatorjs.min.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/mikeerickson/validatorjs"
@@ -65,7 +67,10 @@
   "scripts": {
     "pre-commit": "npm run lint:spec && npm run lint && npm run test",
     "build:all": "./scripts/build.sh",
-    "build": "rimraf dist && grunt dist",
+    "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
+    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/validatorjs.umd.js",
+    "build:es": "rollup --config build/rollup.config.js --format es --file dist/validatorjs.esm.js",
+    "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/validatorjs.min.js",
     "lint": "eslint \"./src/**/*.js\" --fix",
     "lint:spec": "eslint \"./spec/**/*.js\" --rule 'no-redeclare: off'",
     "lint:fix": "eslint \"./src/**/*.js\" --fix",
@@ -74,5 +79,12 @@
     "test:browser": "npm run build:all && node node_modules/karma/bin/karma start --single-run",
     "test": "npm run test:node",
     "todo": "node scripts/todo.js"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "dependencies": {
+    "rollup": "^2.67.0",
+    "rollup-plugin-commonjs": "^10.1.0"
   }
 }
