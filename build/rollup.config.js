@@ -1,4 +1,4 @@
-import commonjs from 'rollup-plugin-commonjs'
+import commonjs from '@rollup/plugin-commonjs';
 export default {
   input: 'src/validator.js', // Jalur relatif to package.json
   output: {
@@ -6,6 +6,11 @@ export default {
     exports: 'named',
   },
   plugins: [
-    commonjs(),
+    commonjs({
+        dynamicRequireTargets: [
+          // include using a glob pattern (either a string or an array of strings)
+          'src/lang/*.js',
+        ]
+      }),
   ],
 }

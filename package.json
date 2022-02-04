@@ -1,7 +1,7 @@
 {
   "name": "@bosquig/validatorjs",
   "description": "Validation library inspired by Laravel's Validator",
-  "version": "3.22.2",
+  "version": "3.22.3",
   "author": "David <david@thejsguy.com>",
   "contributors": [
     {
@@ -41,6 +41,7 @@
     "laravel-validator-for-js"
   ],
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.1",
     "browserify": "^13.0.1",
     "chai": "~3.5.0",
     "eslint": "5.8.0",
@@ -84,7 +85,6 @@
     "dist/*"
   ],
   "dependencies": {
-    "rollup": "^2.67.0",
-    "rollup-plugin-commonjs": "^10.1.0"
+    "rollup": "^2.67.0"
   }
 }
