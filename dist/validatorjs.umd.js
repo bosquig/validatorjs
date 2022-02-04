@@ -5197,7 +5197,7 @@
 	  _load: function(lang) {
 	    if (!this.messages[lang]) {
 	      try {
-	        var rawMessages = require_method('./lang/' + lang);
+	        var rawMessages = require_method('/$$rollup_base$$/src/lang/' + lang + '.js');
 	        this._set(lang, rawMessages);
 	      } catch (e) {}
 	    }

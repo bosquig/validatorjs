@@ -1,7 +1,7 @@
 {
   "name": "@bosquig/validatorjs",
   "description": "Validation library inspired by Laravel's Validator",
-  "version": "3.22.3",
+  "version": "3.22.4",
   "author": "David <david@thejsguy.com>",
   "contributors": [
     {
