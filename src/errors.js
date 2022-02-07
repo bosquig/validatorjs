@@ -31,9 +31,18 @@ Errors.prototype = {
   get: function(attribute) {
     if (this.has(attribute)) {
       return this.errors[attribute];
+    }  else {
+      var keys = Object.keys(this.errors);
+      var key = keys.filter(x => x.includes(attribute + "."));
+      let _errors = [];
+      if (key && key.length > 0) {
+        for (let index = 0; index < key.length; index++) {
+          const element = key[index];
+          _errors =[..._errors,...this.errors[element]];
+        }
+      }
+      return _errors;
     }
-
-    return [];
   },
 
   /**
@@ -45,6 +54,12 @@ Errors.prototype = {
   first: function(attribute) {
     if (this.has(attribute)) {
       return this.errors[attribute][0];
+    } else {
+      let keys = Object.keys(this.errors);
+      let key = keys.find(x => x.includes(attribute + "."));
+      if (key) {
+        return this.errors[key][0];
+      }
     }
 
     return false;
